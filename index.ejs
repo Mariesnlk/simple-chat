@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Simple chat </title> 
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+</head>
+
+
+  <style>
+      
+  body {
+  background:url("http://www.pulauubinstories.com/wp-content/uploads/2018/06/fond-d-ecran-chat-iphone-awesome-awesome-45-doodle-wallpapers-style-of-fond-d-ecran-chat-iphone.jpg") no-repeat;
+  background-size: 100%;
+}
+
+#chatroom{
+  position:fixed;
+  top:15%;
+  left:2%;
+  right:2%;
+  bottom:25%;
+  border: 3px solid #2e2e1f;
+  border-radius: 20px;
+  background: #f5f5f0;
+  overflow:auto;
+}
+
+.message{  
+  display:none;
+  height: auto;
+  word-break: break-all;
+  white-space: pre-wrap;
+  width:90%;
+  word-wrap:break-word;
+  background: #ffaa00;
+  color:#1f1f14;   
+  border-radius: 20px;
+  border:1px solid #d9bfb7;
+  margin:auto;
+  margin-top:1%;
+  margin-bottom: 1%;
+}
+
+.text{
+  word-wrap: break-word;
+  display:inline-block;
+}
+
+.button-delete{
+  border-radius: 15px;
+  border:1px solid #800;
+  font-family: 'Times New Roman', Times, serif;
+  font-size:200%;
+  background-color: #999966;
+  color: #222211;
+}
+
+#container-enter{
+  position:fixed;
+  top:1%;
+  left:2%;
+  right:2%;
+  bottom:86%;
+  border: 3px solid #2e2e1f;
+  background: #f5f5f0;
+  border-radius: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-gap:20px;
+  grid-template: 100px 100px 100px / 1fr 1fr 1fr;
+}
+
+#name{
+  color: #33331a;
+  font-size:200%;
+  text-align: left;
+  display:block;
+  height:30%;
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-bottom: 1%;
+}
+
+#username{
+  width:80%;
+  height:20%;
+  margin-top: 5%;
+  margin-left: 1%;
+  margin-right: 1%;
+  margin-bottom: 1%;
+  display:block;
+}
+
+#login{
+  height:30%;
+  width:50%;
+  font-size:150%;
+  display:block;
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-right: 1%;
+  margin-bottom: 1%;
+  border-radius: 15px;
+  border:1px solid #2e2e1f;
+  background-color: #c2d6d6;
+  color: #669999;
+}
+
+#container-send{
+  height: 15%;
+  position:fixed;
+  top:77%;
+  left:2%;
+  right:2%;
+  bottom:5%;
+  border: 3px solid #2e2e1f;
+  background:#f5f5f0;
+  border-radius: 20px;
+}
+
+.grid-send {
+  display: grid;
+  grid-gap:5px;
+  grid-template:100px 100px / 1fr 1fr;
+  
+}
+
+#message-area{
+  display:block;
+  height:40%;
+  width:90%;
+  margin-top: 3%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 3%;
+  resize: none;
+}
+
+#send_message{
+  display:block;
+  height:40%;
+  width:30%;
+  margin-top: 4%;
+  margin-left: 5%;
+  margin-right: 15%;
+  margin-bottom: 3%;
+  font-size:150%;
+  border-radius: 15px;
+  border:1px solid #2e2e1f;
+  background-color: #c2d6d6;
+  color: #669999;
+}
+.user{
+  font-family: 'Arial';
+  font-size:150%;
+  font-style: italic;
+}
+
+.pole{
+  font-family: 'Arial';
+  font-size:200%;
+  color: #802b00;
+}
+@media only screen and (max-device-width: 480px) {
+   #send_message{
+     height:20%;
+     width:min-content;
+     font-size:80%;
+
+   }
+
+   #message-area{
+     height: auto;
+     width: auto;
+     max-height: 70%;
+   }
+   #login{
+	 font-size: 80%;
+     width: min-content;
+     margin-top: 20%;
+     margin-top: 14px;
+   }
+   #name{
+     font-size: 18px;
+     margin-top: 20px;
+     text-align: right;
+   }
+
+    #username {
+      width: auto;
+      height: auto;
+      max-height: 20%;
+      margin-top: 10%;
+    }
+
+}
+
+</style>
+
+</head>
+<body>
+  <div id="container-enter">
+    <div class="grid">
+      <div id="name">Username</div>
+      <input id="username"></input>
+      <button id="login">Login</button>
+    </div>
+  </div>
+  <div id="chatroom"> 
+      <div class="message">
+        <div class="text">Hello</div>
+      <button class="button-delete">delete</button>
+      </div>
+  </div>
+  <form id="container-send">
+    <div class="grid-send ">
+       <textarea type="text" wrap="soft" id="message-area"></textarea>
+      <button type="button" id="send_message">Send</button>
+    </div>
+  </form >
+
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="chat.js"></script>
+  
+</body>
+</html>
